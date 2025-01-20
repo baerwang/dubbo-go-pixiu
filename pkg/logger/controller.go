@@ -20,7 +20,9 @@ package logger
 import (
 	"strings"
 	"sync"
+)
 
+import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -42,7 +44,7 @@ func (c *logController) setLoggerLevel(level string) bool {
 	}
 
 	c.logger.config.Level = *lvl
-	l, _ := c.logger.config.Build()
+	l, _ := c.logger.config.Build(zap.AddCallerSkip(2))
 	c.logger = &logger{SugaredLogger: l.Sugar(), config: c.logger.config}
 	return true
 }

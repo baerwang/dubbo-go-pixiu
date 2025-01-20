@@ -107,3 +107,8 @@ func InitLogger(conf *zap.Config) {
 func SetLoggerLevel(level string) bool {
 	return control.setLoggerLevel(level)
 }
+
+func HotReload(conf *zap.Config) error {
+	InitLogger(conf)
+	return nil
+}

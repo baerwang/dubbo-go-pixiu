@@ -15,19 +15,12 @@
  * limitations under the License.
  */
 
-package configcenter
+package constant
 
 import (
-	"github.com/apache/dubbo-go-pixiu/pkg/model"
+	"time"
 )
 
-type (
-	ConfigClient interface {
-		LoadConfig(properties map[string]interface{}) (string, error)
-
-		ListenConfig(properties map[string]interface{}) (err error)
-
-		// ViewConfig returns the current remote configuration.
-		ViewConfig() *model.Bootstrap
-	}
+const (
+	CheckConfigInterval = 1 * time.Second
 )

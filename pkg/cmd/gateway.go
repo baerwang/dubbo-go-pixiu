@@ -32,6 +32,7 @@ import (
 	"github.com/apache/dubbo-go-pixiu/pkg/common/constant"
 	pxruntime "github.com/apache/dubbo-go-pixiu/pkg/common/runtime"
 	"github.com/apache/dubbo-go-pixiu/pkg/config"
+	"github.com/apache/dubbo-go-pixiu/pkg/hotreload"
 	"github.com/apache/dubbo-go-pixiu/pkg/logger"
 	"github.com/apache/dubbo-go-pixiu/pkg/model"
 	"github.com/apache/dubbo-go-pixiu/pkg/server"
@@ -124,6 +125,8 @@ func (d *DefaultDeployer) initialize() error {
 	if err != nil {
 		logger.Errorf("[startCmd] failed to get limit cpu number, %s", err.Error())
 	}
+
+	hotreload.StartHotReload(d.configManger, d.bootstrap)
 
 	return err
 }
